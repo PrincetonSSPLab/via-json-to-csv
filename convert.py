@@ -34,8 +34,8 @@ def write_csv(filepath, data):
     data : list
         The data to write to the CSV file.
     """
-    with open(filepath, 'w') as f:
-        writer = csv.writer(f)
+    with open(filepath, 'w+', encoding="utf8", newline="") as f:
+        writer = csv.writer(f, delimiter=',')
         writer.writerows(data)
 
 
@@ -85,9 +85,7 @@ def convert_json_to_csv(json_filepath, csv_filepath):
                diversity_other, diversity_ambiguous]
         csv_data.append(row)
 
-    with open(csv_filepath, 'w+', encoding="utf8", newline="") as f:
-        writer = csv.writer(f, delimiter=',')
-        writer.writerows(csv_data)
+    write_csv(csv_filepath, csv_data)
 
 
 def main():
