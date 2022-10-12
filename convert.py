@@ -61,8 +61,8 @@ def convert_json_to_csv(json_filepath, csv_filepath):
         obj = data[metadata_path][book_id]
 
         filename = obj["filename"] if "filename" in obj else ""
-        title = obj["file_attributes"]["title"] if "file_attributes" in obj else ""
-        google = obj["file_attributes"]["google"] if "file_attributes" in obj else ""
+        title = obj["file_attributes"]["title"] if "title" in obj["file_attributes"] else ""
+        google = obj["file_attributes"]["google"] if "google" in obj["file_attributes"] else ""
 
         identifiable = obj["file_attributes"]["identifiable"] if "identifiable" in obj["file_attributes"] else ""
         identifiable_yes = int(identifiable == "yes")
